@@ -1,0 +1,11 @@
+$myColor: purple;
+$myPosition: center;
+
+h1, p, h3{
+  color: $myColor;
+  text-align: $myPosition;
+}
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
