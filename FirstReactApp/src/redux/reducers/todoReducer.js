@@ -4,7 +4,7 @@ const initialState = {
             name: "test",
             completed: false
         }
-    ],
+    ]
 };
 
 export default (state = initialState, action) => {
@@ -18,12 +18,10 @@ export default (state = initialState, action) => {
                 // ... ile getirilip, ayrıştırıp yeni parametre alınır!
                 ...state, //state.map() *alternatif kullanım*
                 // todos: [action.data] bu kullanım ile sıfırdan oluşturup ona ekleme yapar her seferinde!
-                todos // todos: todos işleminin kısa yazımı!
+                todos: todos // todos: todos işleminin kısa yazımı!
             };
-
-
+            
         default:
             return state;
-        // break;
     }
 }

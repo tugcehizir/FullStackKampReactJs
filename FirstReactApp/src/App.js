@@ -11,23 +11,19 @@ import ListElement from "./components/ListElement";
 import { addTodo } from './redux/actions/todoAction';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      currentValue: '',
-      values: [],
-      isRunOnClick: true
-    };
-  }
-  componentDidMount() {
-    //console.log('Burada yapılan işlem: component Did Mount!');
-    const { currentValue } = this.state;
-    if (currentValue === "") {
+  state = {
+    currentValue: "",
+    isRunOnClick: true
+  };
 
-    }
+  componentDidMount() {
+    const { currentValue } = this.state;
+  //  if (currentValue !== "") {
+  //   this.setState({ isRunOnClick: false });
+  //  }
   }
   componentDidUpdate(prevProps, prevState, snapshot) { //değişkenler kişisel tercih
-    // const { currentValue } = this.state;
+     const { currentValue } = this.state;
     // if(prevState.currentValue !== currentValue && currentValue === ""){
     //   this.setState({ isRunOnClick: false });
     // }
@@ -36,7 +32,7 @@ class App extends React.Component {
     // console.log('snapshot', snapshot); //Snapshot
   }
   componentWillUnmount() {
-    //console.log('Burada yapılan işlem: component Will Unmount!');
+    console.log('Burada yapılan işlem: component Will Unmount!');
   }
   _handleOnClick = () => {
 
@@ -44,26 +40,11 @@ class App extends React.Component {
     const { currentValue } = this.state;
     dispatch(addTodo(currentValue)); //Reducer ile haberleşme!
 
-// const { isRunOnClick } = this state;
-    // if (isRunOnClick === true) {
-    //   values.push(currentValue);
-    //   this.setState({ values: values }, () => {
-    //     console.log(this.state.values)
-    //   });
-  }
-
+  };
   _handleOnChange = event => {
-    this.setState({ currentValue: event.target.value }, () => {
-      //console.log('this.state.currentValue 1', this.state.currentValue);
-    });
-    //console.log('this.state.currentValue 2', this.state.currentValue);
-  };
-  _renderElements = () => {
-    const { values } = this.state;
-    return values.map((value, index) =>
-      <ListElement key={index} text={value} />) //List elementlerde key kullanmak gerek!
-  };
-
+    this.setState({ currentValue: event.target.value });
+    };
+  
   render() {
     //console.log('render!');
     const { currentValue } = this.state;
@@ -85,7 +66,7 @@ class App extends React.Component {
         </div>
         <div style={css}> {/* css tanımı kullanım. amacı: hata verebilen css yazımı */}
           <ul>
-            {this._renderElements()}
+          <ListElement text="test" />
           </ul>
         </div>
       </div>
@@ -93,29 +74,9 @@ class App extends React.Component {
   }
 }
 
-// Fonksiyon kullanım örneği
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React!!
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
-
 export default connect()(App);
+
+
 //Bilgi: HOC(High Order Component, component üreten component!)
 //connect, fonksiyon üreten bir fonksiyon! Dispatch'i props alıp component olarak kullanabilmek için.
 //ikinci () component için
