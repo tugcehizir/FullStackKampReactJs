@@ -17,13 +17,13 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-    const { currentValue } = this.state;
+  //  const { currentValue } = this.state;
   //  if (currentValue !== "") {
   //   this.setState({ isRunOnClick: false });
   //  }
   }
   componentDidUpdate(prevProps, prevState, snapshot) { //değişkenler kişisel tercih
-     const { currentValue } = this.state;
+    // const { currentValue } = this.state;
     // if(prevState.currentValue !== currentValue && currentValue === ""){
     //   this.setState({ isRunOnClick: false });
     // }
@@ -36,7 +36,7 @@ class App extends React.Component {
   }
   _handleOnClick = () => {
 
-    const { dispatch } = this.props;
+    const { dispatch } = this.props; //Props'tan dispatch'i içeri pushladı.
     const { currentValue } = this.state;
     dispatch(addTodo(currentValue)); //Reducer ile haberleşme!
 
@@ -79,4 +79,4 @@ export default connect()(App);
 
 //Bilgi: HOC(High Order Component, component üreten component!)
 //connect, fonksiyon üreten bir fonksiyon! Dispatch'i props alıp component olarak kullanabilmek için.
-//ikinci () component için
+//ikinci () component için, component ismi!
